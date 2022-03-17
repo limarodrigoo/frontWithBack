@@ -1,0 +1,16 @@
+name: Lint 
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: fazer checkout
+      uses: actions/checkout@v2
+    - name: Instala o node com a versão
+      uses: actions/setup-node@v1
+      with:
+        node-version: 14
+    - name: Install modules
+      run: npm install
+    - name: Run ESLint
+      run: npx eslint . --ext .js,.jsx,.ts,.tsx
